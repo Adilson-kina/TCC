@@ -38,10 +38,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#8aadf4",
     width: "12%",
     height: "4%",
-    marginTop: "2%",
+    marginTop: "50%",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#24273a",
   },
   imageContainer: {
     width: "40%",
@@ -66,5 +68,7 @@ const styles = StyleSheet.create({
     height: 75,
     backgroundColor: "#ed8796",
     borderRadius: 40,
+    borderWidth: 1,
+    borderColor: "#24273",
   }
 })
