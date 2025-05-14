@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 
-export default function profile() {
+export default function Profile() {
   return(
     <View style={styles.container}>
       <View style={styles.header}>
