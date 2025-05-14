@@ -1,44 +1,45 @@
 import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { useRouter } from 'expo-router';
+import post from '../components/post.tsx';
 
 export default function Login() {
+  const router = useRouter();
 
-  const navigation = useNavigation();
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const handleSubmit = async () => {
+    const data = { nome, email, senha };
+    const success = await post(data);
+    router.navigate('/profile');
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cadastro</Text>
-        <View style={styles.form}>
-          <View style={styles.items}>
-            <Text style={styles.legenda}>Campo 1:</Text>
-            <TextInput style={styles.input} id="var1"></TextInput>
-          </View>
-
-          <View style={styles.items}>
-            <Text style={styles.legenda}>Campo 2:</Text>
-            <TextInput style={styles.input} id="var2"></TextInput>
-          </View>
-
-          <View style={styles.items}>
-            <Text style={styles.legenda}>Campo 3:</Text>
-            <TextInput style={styles.input} id="var3"></TextInput>
-          </View>
-
-          <View style={styles.items}>
-            <Text style={styles.legenda}>Campo 4:</Text>
-            <TextInput style={styles.input} id="var4"></TextInput>
-          </View>
-
-          <View style={styles.items}>
-            <Text style={styles.legenda}>Campo 5:</Text>
-            <TextInput style={styles.input} id="var5"></TextInput>
-          </View>
-          <Pressable
-          style={styles.butaum}
-          onPress={() => navigation.navigate('profile')}>
-            <Text style={styles.bilhetin}>CADASTRAR</Text>
-          </Pressable>
+      <View style={styles.form}>
+        <View style={styles.items}>
+          <Text style={styles.legenda}>Nome: </Text>
+          <TextInput style={styles.input} value={nome} onChangeText={setNome} />
         </View>
+
+        <View style={styles.items}>
+          <Text style={styles.legenda}>Email: </Text>
+          <TextInput style={styles.input} value={email} onChangeText={setEmail} />
+        </View>
+
+        <View style={styles.items}>
+          <Text style={styles.legenda}>Senha:</Text>
+          <TextInput style={styles.input} value={senha} onChangeText={setSenha} secureTextEntry />
+        </View>
+
+        <Pressable style={styles.butaum} onPress={handleSubmit} >
+          <Text style={styles.bilhetin}>CADASTRAR</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
