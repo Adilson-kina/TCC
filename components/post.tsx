@@ -1,5 +1,5 @@
-export default async function post(data) {
-  const server = "http://localhost/TCCGP/server.php";
+export default async function post(data: any) {
+  const server = "http://localhost/TCC/server.php";
   try {
     const res = await fetch(server, {
       method: 'POST',

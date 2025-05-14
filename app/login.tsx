@@ -1,20 +1,21 @@
 import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { useRouter } from 'expo-router';
+import React from 'react';
 import post from '../components/post.tsx';
 
 export default function Login() {
-  const router = useRouter();
-
+  const navigation = useNavigation();
+  
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
   const handleSubmit = async () => {
     const data = { nome, email, senha };
-    const success = await post(data);
-    router.navigate('/profile');
+    const response = await post(data);
+    navigation.navigate('profile', { id: response.id }); // Passa o ID do usuário para Profile
+
   };
 
   return (

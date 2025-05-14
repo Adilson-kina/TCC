@@ -22,8 +22,12 @@ if ($requestMethod === "POST") {
             $stmt->bindParam(":senha", $senhaHash); // Armazena o hash da senha
             
             if ($stmt->execute()) {
-                echo json_encode(["mensagem" => "Usuário criado!", "dados" => $data]);
-            } else {
+                $userId = $pdo->lastInsertId(); // Obtém o ID do usuário recém-inserido
+                echo json_encode([
+                    "mensagem" => "Usuário criado!",
+                    "id" => $userId,
+                    "dados" => $data
+                ]);} else {
                 echo json_encode(["erro" => "Erro ao inserir no banco"]);
             }
         } catch (PDOException $e) {
