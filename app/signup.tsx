@@ -47,7 +47,7 @@ export default function SignUp() {
       <Text style={styles.title}>Inicie sua jornada rumo a uma alimentação saudável e um estado emocional equilibrado</Text>
       <View style={styles.form}> {/* FORM*/ }
         <View style={styles.items}>
-          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Email" />
+          <TextInput style={styles.input} value={nome} onChangeText={setNome} placeholder="Nome" />
         </View>
 
         <View style={styles.items}>
