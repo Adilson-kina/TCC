@@ -1,5 +1,16 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Link } from 'expo-router';
+import { Dimensions } from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+function heightPercent(percentage:number){
+  return windowHeight * (percentage / 100);
+}
+
+function widthPercent(percentage:number){
+  return windowWidth * (percentage / 100);
+}
 
 export default function Index() {
   return (
@@ -14,19 +25,17 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#c6a0f6',
+    backgroundColor: '#ecfcec',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   button:{
-    backgroundColor: "#89b4fa",
-    borderWidth: 1,
-    borderColor: "#1e1e2e",
-    width: "12%",
-    height: "4%",
+    backgroundColor: "#007912",
+    width: widthPercent(12),
+    height: heightPercent(4),
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
-    marginBottom: "5%",
+    marginBottom: 50,
   }
 })
